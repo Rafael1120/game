@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess the Number</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Guess the Number</h1>
+  <p>Try to guess the number between 1 and 100.</p>
+  <input type="text" id="guessInput">
+  <button onclick="checkGuess()">Guess</button>
+  <p id="result"></p>
+
+  <script>
+    // Gera um número aleatório entre 1 e 100
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+    // Função para verificar o palpite do jogador
+    function checkGuess() {
+      // Obtém o valor digitado pelo jogador
+      const guess = parseInt(document.getElementById("guessInput").value);
+
+      // Verifica se o palpite é um número válido
+      if (isNaN(guess) || guess < 1 || guess > 100) {
+        document.getElementById("result").innerHTML = "Please enter a valid number between 1 and 100.";
+      } else {
+        // Compara o palpite com o número aleatório gerado
+        if (guess === randomNumber) {
+          document.getElementById("result").innerHTML = "Congratulations! You guessed the correct number!";
+        } else if (guess < randomNumber) {
+          document.getElementById("result").innerHTML = "Too low! Try a higher number.";
+        } else {
+          document.getElementById("result").innerHTML = "Too high! Try a lower number.";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
